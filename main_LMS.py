@@ -1,71 +1,50 @@
 import tkinter
 from tkinter import font
-
 from PIL import Image, ImageTk
 
-import Add_Book_Details
-import Delete_Book
-import Update_Book_Details
-import View_Books_List
-import Issue_Book
-import Return_Book
+import LoginFrame.staff_login_frame
+import LoginFrame.student_login_frame
 
 
 class mainWindow(object):
 
     def __init__(self):
-        self.root = tkinter.Tk()
-        self.root.title("Library Management System")
-        self.root.geometry('1000x700')
-        self.root.config(bg='Black')
 
-        img = ImageTk.PhotoImage(Image.open('lib1.jpeg'))
-        panel = tkinter.Label(self.root, image=img, width=250, height=500)
+        self.mainWindow = tkinter.Tk()
+        self.mainWindow.title("Library Management System")
+        self.mainWindow.geometry('1000x700')
+        self.mainWindow.config(bg='Black')
+
+        img = ImageTk.PhotoImage(Image.open('Images/lib1.jpeg'))
+        panel = tkinter.Label(self.mainWindow, image=img, width=250, height=500)
         panel.grid(row=0, column=0)
 
-        img2 = ImageTk.PhotoImage(Image.open('lib1.jpeg'))
-        panel = tkinter.Label(self.root, image=img2, width=250, height=500)
+        img2 = ImageTk.PhotoImage(Image.open('Images/lib1.jpeg'))
+        panel = tkinter.Label(self.mainWindow, image=img2, width=250, height=500)
         panel.grid(row=0, column=2)
 
-        label = tkinter.Label(self.root, text='Library Management System', bg='black', fg='white')
+        label = tkinter.Label(self.mainWindow, text='Library Management System', bg='black', fg='white')
         label.grid(row=0, column=1)
         label['font'] = tkinter.font.Font(size=25, family='Helvetica')
 
-        add_book = tkinter.Button(self.root, text='Add book Details', pady=10, width=30, activebackground='red',
-                                  activeforeground='yellow', command=Add_Book_Details.add_book)
-        add_book.grid(row=1, column=0, sticky='E')
+        admin_login = tkinter.Button(self.mainWindow, text='STAFF LOGIN', pady=10, width=20, activebackground='red', activeforeground='yellow', command=LoginFrame.staff_login_frame.staff_login)
+        admin_login.grid(row=0, column=1, sticky='WS')
 
-        update_book = tkinter.Button(self.root, text='Update Book Details', pady=10, width=30, activebackground='red',
-                                     activeforeground='yellow', command=Update_Book_Details.UpdateDetails)
-        update_book.grid(row=1, column=1)
+        stud_login = tkinter.Button(self.mainWindow, text='STUDENT LOGIN', pady=10, width=20, activebackground='red', activeforeground='yellow', command=LoginFrame.student_login_frame.student_login)
+        stud_login.grid(row=0, column=1, sticky='ES')
 
-        delete_book = tkinter.Button(self.root, text='Delete Book', pady=10, width=30, activebackground='red',
-                                     activeforeground='yellow', command=Delete_Book.Delete_Book)
-        delete_book.grid(row=1, column=2, sticky='W')
+        self.mainWindow.columnconfigure(0, weight=1)
+        self.mainWindow.columnconfigure(1, weight=2)
+        self.mainWindow.columnconfigure(2, weight=1)
 
-        view_book_list = tkinter.Button(self.root, text='View Book List', pady=10, width=30, activebackground='red',
-                                        activeforeground='yellow', command=View_Books_List.viewList)
-        view_book_list.grid(row=2, column=0, sticky='E')
+        self.mainWindow.rowconfigure(0, weight=1)
+        self.mainWindow.rowconfigure(1, weight=1)
+        self.mainWindow.rowconfigure(2, weight=1)
 
-        issue_book = tkinter.Button(self.root, text='Issue Book', pady=10, width=30, activebackground='red',
-                                    activeforeground='yellow', command=Issue_Book.IssueBook)
-        issue_book.grid(row=2, column=1)
+        self.mainWindow.minsize(1000, 700)
+        self.mainWindow.maxsize(1000, 700)
 
-        return_book = tkinter.Button(self.root, text='Return Book', pady=10, width=30, activebackground='red',
-                                     activeforeground='yellow', command=Return_Book.ReturnBook)
-        return_book.grid(row=2, column=2, sticky='W')
-
-        self.root.columnconfigure(0, weight=2)
-        self.root.columnconfigure(1, weight=4)
-        self.root.columnconfigure(2, weight=1)
-
-        self.root.rowconfigure(0, weight=1)
-        self.root.rowconfigure(1, weight=1)
-        self.root.rowconfigure(2, weight=1)
-
-        self.root.minsize(1000, 700)
-        self.root.maxsize(1000, 700)
-        self.root.mainloop()
+        self.mainWindow.mainloop()
 
 
 if __name__ == '__main__':
