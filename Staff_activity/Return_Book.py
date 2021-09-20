@@ -214,10 +214,10 @@ class ReturnBook:
         # print(actual_return_date)
         # print(today_date)
 
-        # difference = get_diff().getDifference(actual_return_date, today_date)
+        difference = get_diff().getDifference(actual_return_date, today_date)
         # print(difference)
 
-        difference = 11
+        # difference = 11
 
         # if difference is less than or equal to zero then simply return book
         # or if difference is greater than zero then take fine from student
